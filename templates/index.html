@@ -1,0 +1,482 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<meta name="theme-color" content="#071426">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://live-age-calculator--abdullah201435.replit.app/static/WhatsappCardPreview.png">
+<!-- Favicon placeholder: replace the emoji/SVG data URL with your own icon file -->
+<link rel="icon" href="{% static 'favicon1.png' %}">
+<script>
+(function(){
+ try{
+  if(location.search.indexOf("notrack=1")>-1)localStorage.setItem("notrack","1");
+  if(location.search.indexOf("notrack=0")>-1)localStorage.removeItem("notrack");
+    if(localStorage.getItem("notrack")==="1"||location.hostname==="127.0.0.1"||location.hostname==="localhost")window["ga-disable-G-0PSLWZPFKD"]=true;
+ }catch(e){}
+})();
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PSLWZPFKD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0PSLWZPFKD');
+</script>
+<style>
+:root{--bg:#071426;--bg2:#0b1d38;--card:rgba(255,255,255,.05);--bd:rgba(120,170,255,.18);--tx:#fff;--mut:#a9b8cf;--p:#155EEF;--a:#22D3EE;--ok:#34d399;--err:#f87171;--r:16px}
+[data-theme=light]{--bg:#f3f7ff;--bg2:#e4edff;--card:rgba(255,255,255,.85);--bd:rgba(21,94,239,.2);--tx:#071426;--mut:#41526b;--a:#0a7f99}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 50% at 80% 0,rgba(21,94,239,.35),transparent),radial-gradient(50% 40% at 0 100%,rgba(34,211,238,.18),transparent),linear-gradient(180deg,var(--bg),var(--bg2));background-size:140% 140%;animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{background-position:100% 100%}}
+a{color:inherit}img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--a);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:auto;padding:0 20px}
+section{padding:84px 0}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:8px}
+.sub{color:var(--mut);margin-bottom:32px;max-width:60ch}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--p),var(--a));z-index:100}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--bd)}
+nav{display:flex;align-items:center;gap:14px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none}
+.logo b{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--p),var(--a));color:#fff;font-size:.9rem}
+.links{display:flex;gap:4px;margin-left:auto;list-style:none;padding:0}
+.links a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--mut);position:relative;transition:.2s}
+.links a:hover,.links a.on{color:var(--tx)}
+.links a.on:after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;background:var(--a);border-radius:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.97)}
+.btn.pri{background:linear-gradient(135deg,var(--p),#2b7bff);border-color:transparent;color:#fff;box-shadow:0 6px 24px rgba(21,94,239,.4)}
+.btn.sm{padding:8px 14px;font-size:.9rem}
+#theme,#burger{width:40px;height:40px;padding:0;justify-content:center;border-radius:10px}
+#burger{display:none}
+.hero{padding:72px 0 40px;min-height:calc(100vh - 66px);display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;width:100%}
+.badge{display:inline-block;padding:6px 14px;border:1px solid var(--bd);border-radius:999px;background:var(--card);color:var(--a);font-size:.9rem;margin-bottom:16px}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;letter-spacing:-.02em}
+.role{font-size:clamp(1.2rem,3vw,1.7rem);color:var(--a);min-height:1.6em;margin:12px 0}
+.role:after{content:"|";animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.hero p.lead{color:var(--mut);max-width:56ch;margin-bottom:24px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.loc{margin-top:20px;color:var(--mut);font-size:.95rem}
+.frame{position:relative;width:min(340px,80%);aspect-ratio:1;margin:auto;border-radius:28px;padding:5px;background:linear-gradient(135deg,var(--p),var(--a));box-shadow:0 0 60px rgba(34,211,238,.35);animation:glow 4s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 90px rgba(21,94,239,.6)}}
+.frame img,.frame .ph{width:100%;height:100%;object-fit:cover;border-radius:24px;background:var(--bg2)}
+.ph{display:grid;place-items:center;font-size:4rem;font-weight:800;color:var(--a)}
+.chip{position:absolute;padding:6px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--bd);font-size:.8rem;font-weight:600}
+.chip:nth-of-type(1){top:-12px;left:-18px}.chip:nth-of-type(2){right:-20px;top:40%}.chip:nth-of-type(3){bottom:-12px;left:20px}
+.strip{overflow:hidden;border-block:1px solid var(--bd);padding:14px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:36px;width:max-content;animation:tick 28s linear infinite;color:var(--mut);font-weight:600}
+.track span:before{content:"◆ ";color:var(--a)}@keyframes tick{to{transform:translateX(-50%)}}
+.scroll{display:block;margin:28px auto 0;width:24px;height:38px;border:2px solid var(--mut);border-radius:14px;position:relative}
+.scroll:after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:3px;background:var(--a);animation:wheel 1.6s infinite}
+@keyframes wheel{to{transform:translateY(12px);opacity:0}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:22px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--a);box-shadow:0 12px 36px rgba(21,94,239,.25)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.tl{position:relative;display:grid;gap:22px;padding-left:34px;max-width:760px}
+.tl:before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--a),var(--p))}
+.tl .card{position:relative}.tl .card:before{content:"";position:absolute;left:-30px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--a);box-shadow:0 0 0 4px var(--bg)}
+.tl dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin-top:10px;color:var(--mut)}.tl dt{font-weight:600;color:var(--tx)}.tl dd{margin:0}
+.tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78rem;background:rgba(34,211,238,.14);color:var(--a);border:1px solid rgba(34,211,238,.3);margin:0 6px 6px 0}
+.ok{background:rgba(52,211,153,.14);color:var(--ok);border-color:rgba(52,211,153,.35)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;align-items:center}
+.f{padding:8px 16px;border-radius:999px;border:1px solid var(--bd);background:var(--card);color:var(--mut);cursor:pointer;font:inherit}
+.f[aria-pressed=true]{background:var(--p);color:#fff;border-color:var(--p)}
+input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+.tools input{max-width:260px;margin-left:auto}
+.ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--p),var(--a));color:#fff;margin-bottom:12px}
+.ico svg{width:22px;height:22px}
+.card h3{font-size:1.1rem}.card p{color:var(--mut);font-size:.95rem}
+.note{font-size:.85rem;color:var(--mut);border-left:3px solid var(--a);padding:6px 12px;margin:16px 0}
+.pc{padding:0;overflow:hidden;display:flex;flex-direction:column;cursor:pointer}
+.pc img,.pc .ph{aspect-ratio:16/9;width:100%;object-fit:cover;background:var(--bg2);font-size:2rem}
+.pc .b{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:.82rem}
+.empty{text-align:center;padding:48px;color:var(--mut);border:2px dashed var(--bd);border-radius:var(--r)}
+.hide{display:none!important}
+dialog{border:1px solid var(--bd);border-radius:20px;background:var(--bg2);color:var(--tx);width:min(720px,92vw);max-height:88vh;padding:0;overflow:auto}
+dialog::backdrop{background:rgba(3,8,18,.75);backdrop-filter:blur(4px)}
+dialog[open]{animation:pop .25s ease}@keyframes pop{from{opacity:0;transform:scale(.95)}}
+dialog .in{padding:26px;display:grid;gap:12px}
+dialog h4{color:var(--a);margin-top:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+form{display:grid;gap:14px}label{font-weight:600;font-size:.92rem}
+.err{color:var(--err);font-size:.82rem;min-height:1.1em}
+.msg{padding:10px 14px;border-radius:10px;font-size:.92rem}.msg.good{background:rgba(52,211,153,.15);color:var(--ok)}.msg.bad{background:rgba(248,113,113,.15);color:var(--err)}
+.rv{display:grid;gap:14px}
+.ct{display:grid;gap:14px;margin-bottom:20px}.ct div{display:flex;flex-direction:column}.ct small{color:var(--mut)}
+footer{border-top:1px solid var(--bd);padding:36px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer ul{display:flex;gap:16px;list-style:none;padding:0;flex-wrap:wrap}footer a{color:var(--mut);text-decoration:none}footer a:hover{color:var(--a)}
+#toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,30px);background:var(--bg2);border:1px solid var(--a);padding:12px 20px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s;z-index:200;max-width:90vw}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}.rev.in{opacity:1;transform:none}
+@media(max-width:860px){
+#burger{display:inline-flex}.links{position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:12px 20px;border-bottom:1px solid var(--bd);display:none}.links.open{display:flex}
+.hero .wrap,.two{grid-template-columns:1fr}.frame{order:-1;width:min(260px,70%)}.hero{min-height:0}
+.nav-cta{display:none}.chip{display:none}.tools input{margin:0;max-width:none;width:100%}.track{animation-duration:40s}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rev{opacity:1;transform:none}}
+.slider{position:relative}
+.sl-view{overflow:hidden;border-radius:12px}
+.sl-track{display:flex;transition:transform .5s ease}
+.sl-slide{flex:0 0 100%}
+.sl-slide img{width:100%;aspect-ratio:16/9;object-fit:contain;background:var(--bg)}
+.sl-slide .ph{width:100%;aspect-ratio:16/9}
+.sl-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid var(--bd);background:rgba(7,20,38,.75);color:#fff;font-size:1.5rem;line-height:1;cursor:pointer}
+.sl-btn:hover{background:var(--p)}
+.sl-prev{left:8px}.sl-next{right:8px}
+.sl-count{position:absolute;right:10px;bottom:10px;padding:2px 10px;border-radius:999px;background:rgba(7,20,38,.75);color:#fff;font-size:.8rem}
+.logo b.logo-mark{background:none;overflow:hidden}
+.logo-mark img{width:100%;height:100%;object-fit:cover;border-radius:10px;transition:opacity .3s}
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:start}
+.about p{color:var(--mut);margin-bottom:14px;max-width:62ch}
+.facts{display:grid;gap:12px}
+.facts .card{padding:16px}
+.facts small{display:block;color:var(--mut)}
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:8px;padding:13px 18px;border-radius:999px;background:#25D366;color:#073b1d;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s}
+.wa-float:hover{transform:translateY(-3px)}
+.wa-float svg{width:24px;height:24px;flex:none}
+@media(max-width:860px){.about{grid-template-columns:1fr}.wa-float span{display:none}.wa-float{padding:14px}}
+</style>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+<header><div class="wrap"><nav aria-label="Main">
+<a class="logo" href="#home" aria-label="Abdullah Bajwa, home"><b class="logo-mark"><img id="logoImg" src="{% static 'favicon1.png' %}" alt="" width="36" height="36"></b><span>Abdullah Bajwa</span></a>
+<ul class="links" id="links">
+<li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#degrees">Degrees</a></li><li><a href="#skills">Skills</a></li><li><a href="#services">Services</a></li><li><a href="#projects">Projects</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li></ul>
+<a class="btn pri sm nav-cta" href="#contact">Let's Talk</a>
+<button class="btn" id="theme" aria-label="Switch to light mode" type="button">🌙</button>
+<button class="btn" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="links" type="button">☰</button>
+</nav></div></header>
+
+<main>
+<section class="hero" id="home"><div class="wrap">
+<div>
+<span class="badge">Developer &amp; AI Automation Specialist</span>
+<h1>{{ name }}</h1>
+<div class="role" id="role" aria-live="off">Frontend Developer</div>
+<p class="lead">I build modern websites, interactive user experiences and automation workflows. I am a student developer in Faisalabad, learning in public and open to remote work.</p>
+<div class="row">
+<a class="btn pri" href="#projects">Explore My Projects</a>
+<button class="btn" type="button" data-cv>Download My CV</button>
+<a class="btn sm" href="#contact">Contact Me</a></div>
+<p class="loc">Faisalabad, Pakistan · Open to Remote Opportunities</p>
+</div>
+<div class="frame" id="frame"><span class="chip">HTML</span><span class="chip">Python</span><span class="chip">n8n</span></div>
+</div></section>
+<div class="strip" aria-label="Technologies"><div class="track" id="strip"></div></div>
+<a class="scroll" href="#degrees" aria-label="Scroll to degrees"></a>
+<section id="about"><div class="wrap rev">
+<h2>About Me</h2><p class="sub">A little about who I am and what I am working towards.</p>
+<div class="about"><div>
+<p>I am Muhammad Abdullah Nasir, also known as Abdullah Bajwa, a student developer from Faisalabad, Pakistan. I am {{ studyStatus|lower }} ICS at Punjab College and building my skills in web development, Python and automation.</p>
+<p>I build responsive websites and automation workflows that save time. I am looking for freelance and remote opportunities where I can keep learning and build useful things.</p>
+<div class="row"><a class="btn pri" href="#contact">Let's Talk</a><button class="btn" type="button" data-cv>Download My CV</button></div>
+</div>
+<div class="facts">
+<div class="card"><small>Location</small>Faisalabad, Punjab, Pakistan</div>
+<div class="card"><small>Education</small>ICS, Punjab College</div>
+<div class="card"><small>Focus</small>Web development, Python and automation</div>
+<div class="card"><small>Availability</small>Open to freelance and remote work</div>
+</div></div></div></section>
+<section id="degrees"><div class="wrap rev">
+<h2>Degrees &amp; Education</h2><p class="sub">My academic path so far.</p>
+<div class="tl" id="edu"></div></div></section>
+
+<section id="skills"><div class="wrap rev">
+<h2>Skills</h2><p class="sub">Tools and areas I work with. Cards describe topics, not verified proficiency levels.</p>
+<div class="tools"><div id="skf" class="row"></div><input id="sks" type="search" placeholder="Search skills…" aria-label="Search skills"></div>
+<div class="grid" id="skg"></div><p class="empty hide" id="ske">No skill matches that search. Try another word or choose All.</p>
+<p class="note">The scrolling ticker is decorative and respects your reduced-motion setting.</p>
+</div></section>
+
+<section id="services"><div class="wrap rev">
+<h2>Services</h2><p class="sub">{{servicesline}}</p>
+<div class="grid" id="srv"></div>
+</div></section>
+
+<section id="projects"><div class="wrap rev">
+<h2>Projects</h2><p class="sub">Projects are managed in the PROJECTS array in the source code. The entries below are demo examples, not client work.</p>
+<div class="tools" id="pf"></div><div class="grid" id="pg"></div>
+<div class="empty hide" id="pe">No projects in this category yet. Add one to the PROJECTS array in the source code.</div>
+</div></section>
+
+<section id="reviews"><div class="wrap rev">
+<h2>Reviews</h2><p class="sub">Leave feedback below. </p>
+<div class="two">
+<div class="rv" id="rv"></div>
+<form id="rf" novalidate class="card">
+{% csrf_token %}
+<input type="text" id="rw" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<div><label for="rn">Name</label><input id="rn" maxlength="60" autocomplete="name"><div class="err" id="en"></div></div>
+<div><label for="re">Email (never shown publicly)</label><input id="re" type="email" maxlength="120" autocomplete="email"><div class="err" id="ee"></div></div>
+<div><label for="rc">Comment</label><textarea id="rc" rows="4" maxlength="500"></textarea><div class="err" id="ec"></div><small id="cc">0/500</small></div>
+<button class="btn pri" type="submit">Submit Review</button><div id="rm" role="status"></div>
+</form></div></div></section>
+
+<section id="contact"><div class="wrap rev">
+<h2>Contact</h2><p class="sub">Open to suitable freelance and remote opportunities.</p>
+<div class="two"><div class="card"><div class="ct">
+<div><small>Email</small><span id="em"></span></div>
+<div><small>WhatsApp</small><span id="wa"></span></div>
+<div><small>Location</small><span>Faisalabad, Punjab, Pakistan</span></div>
+<div><small>Response time</small><span>{{ ResponseTime }}</span></div></div>
+<div class="row"><a class="btn pri" id="mail" href="#">Email Me</a><a class="btn" id="wal" href="#" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a><button class="btn" id="copy" type="button">Copy Email</button></div></div>
+<div class="card"><h3>Download CV</h3><p style="margin:8px 0 16px">Download my CV as a PDF.</p>
+<div class="row"><button class="btn pri" type="button" data-cv>Download My CV</button></div></div></div>
+<form id="cf" novalidate class="card" style="margin-top:20px">
+<h3>Send me a message</h3>
+{% csrf_token %}
+<input type="text" id="cw" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<div><label for="cn">Name</label><input id="cn" maxlength="60" autocomplete="name"><div class="err" id="cne"></div></div>
+<div><label for="cm">Email</label><input id="cm" type="email" maxlength="120" autocomplete="email"><div class="err" id="cme"></div></div>
+<div><label for="cx">Message</label><textarea id="cx" rows="5" maxlength="1000"></textarea><div class="err" id="cxe"></div></div>
+<button class="btn pri" type="submit">Send Message</button><div id="cs" role="status"></div>
+</form>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div><strong>Muhammad Abdullah Nasir</strong><br><span style="color:var(--mut)">Building clean web experiences and smart automations.</span></div>
+<ul><li><a href="#home">Home</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li><li><a id="fm" href="#">Email</a></li><li><a id="fw" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a></li></ul>
+<div class="row"><span style="color:var(--mut)">© <span id="yr"></span> Muhammad Abdullah Nasir</span><a class="btn sm" href="#home">Back to Top</a></div>
+</div></footer>
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg><span>Chat</span></a>
+<dialog id="dlg" aria-labelledby="dt"><div class="in" id="din"></div></dialog>
+<div id="toast" role="status"></div>
+
+{{ skills|json_script:"skills-data" }}
+{{ projects|json_script:"projects-data" }}
+{{ services|json_script:"services-data" }}
+{{ reviews|json_script:"reviews-data" }}
+<script>
+/* ================= CONFIGURATION (edit here) ================= */
+const PROFILE_IMAGE_URL = "{% static 'mypic.png' %}";            // Put your photo URL here. Empty = initials placeholder.
+const CV_URL = "{% static 'CV.pdf' %}";               // Path to your real CV.
+const CV_FILENAME = "Muhammad-Abdullah-Nasir-CV.pdf";                 // Reviews use localStorage only. See submitReview() for backend notes.
+const REVIEWS_KEY = "portfolio_demo_reviews_v1";
+const CONTACT = {email:"abdulah201435@gmail.com", whatsapp:"+923019264318", whatsappDisplay:"+92301 9264318", location:"Faisalabad, Punjab, Pakistan"};        // Private by default; not displayed anywhere.
+const ROLES = ["Frontend Developer","Full-Stack Web Developer","AI Automation Developer","AI Agent Builder"];
+
+const EDUCATION = [
+ {icon:"🎓",title:"Matriculation",status:"Completed",done:true,details:{Institute:"Legends School System",Board:"BISE Faisalabad",Marks:"1099/1200"}},
+ {icon:"📘",title:"Intermediate (ICS)",status:"{{studyStatus}}",done:false,details:{Year:"{{currentClass}}",Institute:"Punjab College, Jhang Road, Faisalabad"}}
+];
+
+const ICONS = {code:'<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 4l-4 16"/>',py:'<path d="M12 3c-4 0-4 2-4 3v3h8V6c0-1 0-3-4-3zM8 9H5c-2 0-2 6 0 6h3M16 9h3c2 0 2 6 0 6h-3M8 15v3c0 1 0 3 4 3s4-2 4-3v-3z"/>',stack:'<path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5"/>',flow:'<circle cx="5" cy="6" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="18" r="2"/><path d="M7 6h4l4 6h2M7 18h4l4-6"/>',bot:'<rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 16h6"/>',db:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 2 4 3 8 3s8-1 8-3V6M4 12c0 2 4 3 8 3s8-1 8-3"/>'};
+const SKILLS = JSON.parse(document.getElementById("skills-data").textContent);
+const STRIP = ["HTML","CSS","JavaScript","Python","C","n8n","Make.com","AI Agents"];
+
+/* Add, edit or remove projects here. Missing optional fields are hidden automatically.
+   Fields: id, title, description, category, technologies[], frontend, backend, integrations,
+   date (YYYY-MM-DD), image, liveUrl, sourceUrl, screenshots[], status */
+const PROJECTS = JSON.parse(document.getElementById("projects-data").textContent);
+
+/* ================= HELPERS ================= */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+function el(tag,props={},...kids){const n=document.createElement(tag);for(const[k,v]of Object.entries(props)){if(v==null||v===false)continue;if(k==="class")n.className=v;else if(k==="text")n.textContent=v;else if(k.startsWith("on"))n.addEventListener(k.slice(2),v);else n.setAttribute(k,v)}kids.flat().forEach(c=>c!=null&&n.append(c.nodeType?c:document.createTextNode(c)));return n}
+function svg(key){const s=document.createElementNS("http://www.w3.org/2000/svg","svg");s.setAttribute("viewBox","0 0 24 24");s.setAttribute("fill","none");s.setAttribute("stroke","currentColor");s.setAttribute("stroke-width","2");s.setAttribute("stroke-linecap","round");s.setAttribute("stroke-linejoin","round");s.setAttribute("aria-hidden","true");s.innerHTML=ICONS[key]||ICONS.code;return s}
+function safeUrl(u){try{const x=new URL(u);return(x.protocol==="https:"||x.protocol==="http:")?x.href:null}catch{return null}}
+function fmtDate(d,time){const x=new Date(d);return isNaN(x)?"":x.toLocaleString("en-GB",time?{dateStyle:"medium",timeStyle:"short"}:{year:"numeric",month:"short",day:"numeric"})}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("show"),3500)}
+function store(){try{localStorage.setItem("_t","1");localStorage.removeItem("_t");return localStorage}catch{return null}}
+function filterBar(host,items,key,onChange){host.replaceChildren();const cats=["All",...new Set(items.map(i=>i[key]).filter(Boolean))];cats.forEach((c,i)=>host.append(el("button",{class:"f",type:"button","aria-pressed":i===0,text:c,onclick:e=>{$$(".f",host).forEach(b=>b.setAttribute("aria-pressed","false"));e.currentTarget.setAttribute("aria-pressed","true");onChange(c)}})))}
+
+/* ================= PROFILE, CONTACT, STRIP ================= */
+(function(){
+ const f=$("#frame"),ph=()=>f.prepend(el("div",{class:"ph",role:"img","aria-label":"Initials MA placeholder for profile photo",text:"MA"}));
+ const u=safeUrl(PROFILE_IMAGE_URL)||(PROFILE_IMAGE_URL&&!/^[a-z]+:/i.test(PROFILE_IMAGE_URL)?PROFILE_IMAGE_URL:null);
+ if(u){const i=el("img",{src:u,alt:"Portrait of Muhammad Abdullah Nasir",width:340,height:340});i.onerror=()=>{i.remove();ph()};f.prepend(i)}else ph();
+ const wa="https://wa.me/"+CONTACT.whatsapp.replace(/\D/g,"");
+ $("#em").textContent=CONTACT.email;$("#wa").textContent=CONTACT.whatsappDisplay+" (WhatsApp only)";
+ $("#mail").href=$("#fm").href="mailto:"+CONTACT.email+"?subject="+encodeURIComponent("Hello Abdullah");
+ $("#wal").href=$("#fw").href=wa;$("#yr").textContent=new Date().getFullYear();
+ $("#strip").append(...[...STRIP,...STRIP].map(s=>el("span",{text:s})));
+ $("#copy").onclick=async()=>{try{await navigator.clipboard.writeText(CONTACT.email);toast("Email copied to clipboard.")}catch{toast("Copy failed. Email: "+CONTACT.email)}};
+})();
+
+/* ================= ROLE TEXT ================= */
+(function(){const t=$("#role"),still=matchMedia("(prefers-reduced-motion:reduce)").matches;if(still)return;let i=0,c=0,del=false;
+ (function tick(){const w=ROLES[i];c+=del?-1:1;t.textContent=w.slice(0,c);let d=del?35:70;if(!del&&c===w.length){del=true;d=1400}else if(del&&c===0){del=false;i=(i+1)%ROLES.length;d=300}setTimeout(tick,d)})()})();
+
+/* ================= EDUCATION ================= */
+$("#edu").append(...EDUCATION.map(e=>el("article",{class:"card"},el("div",{class:"row"},el("span",{"aria-hidden":"true",text:e.icon,style:"font-size:1.6rem"}),el("h3",{text:e.title}),el("span",{class:"tag"+(e.done?" ok":""),text:e.status})),el("dl",{},Object.entries(e.details).flatMap(([k,v])=>[el("dt",{text:k}),el("dd",{text:v})])))));
+/* ================= SERVICES (edit this list to add or change services) ================= */
+const SERVICES = JSON.parse(document.getElementById("services-data").textContent);
+$("#srv").append(...SERVICES.map(s=>el("article",{class:"card"},el("div",{class:"ico"},svg(s.icon)),el("h3",{text:s.title}),el("p",{text:s.desc}),el("a",{class:"btn sm",href:"#contact",text:"Discuss this",style:"margin-top:14px"}))));
+
+/* ================= FLOATING WHATSAPP BUTTON ================= */
+(function(){const a=$("#waFloat");if(a)a.href="https://wa.me/"+CONTACT.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent("Hello Abdullah, I saw your portfolio and would like to talk.");})();
+
+/* ================= SKILLS ================= */
+(function(){let cat="All",q="";const g=$("#skg");
+ function draw(){g.replaceChildren();const list=SKILLS.filter(s=>(cat==="All"||s.cat===cat)&&(s.name+s.desc+s.cat).toLowerCase().includes(q));
+  list.forEach(s=>g.append(el("article",{class:"card"},el("div",{class:"ico"},svg(s.icon)),el("h3",{text:s.name}),el("span",{class:"tag",text:s.cat}),el("p",{text:s.desc}))));
+  $("#ske").classList.toggle("hide",list.length>0)}
+ filterBar($("#skf"),SKILLS,"cat",c=>{cat=c;draw()});
+ $("#sks").addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();draw()});draw()})();
+
+/* ================= PROJECTS ================= */
+(function(){let cat="All";const g=$("#pg"),dlg=$("#dlg");
+ const row=(h,v)=>v?[el("h4",{text:h}),el("p",{text:v})]:[];
+ function link(u,t,cls){const s=safeUrl(u);return s?el("a",{class:"btn sm "+(cls||""),href:s,target:"_blank",rel:"noopener noreferrer",text:t,onclick:e=>e.stopPropagation()}):null}
+ function img(u,alt){const s=safeUrl(u)||(u&&!/^[a-z]+:/i.test(u)?u:null);if(!s)return el("div",{class:"ph","aria-hidden":"true",text:"</>"});const i=el("img",{src:s,alt,loading:"lazy"});i.onerror=()=>i.replaceWith(el("div",{class:"ph","aria-hidden":"true",text:"</>"}));return i}
+ function slider(list,title){
+ let i=0,t=null;
+ const track=el("div",{class:"sl-track"},list.map((s,n)=>el("div",{class:"sl-slide"},img(s,title+" screenshot "+(n+1)))));
+ const count=el("span",{class:"sl-count",text:"1 / "+list.length});
+ const go=n=>{i=(n+list.length)%list.length;track.style.transform="translateX(-"+(i*100)+"%)";count.textContent=(i+1)+" / "+list.length};
+ const prev=el("button",{class:"sl-btn sl-prev",type:"button","aria-label":"Previous screenshot",text:"‹",onclick:()=>go(i-1)});
+ const next=el("button",{class:"sl-btn sl-next",type:"button","aria-label":"Next screenshot",text:"›",onclick:()=>go(i+1)});
+ const box=el("div",{class:"slider",role:"region","aria-label":"Project screenshots"},el("div",{class:"sl-view"},track),list.length>1?[prev,next,count]:null);
+ if(list.length>1&&!matchMedia("(prefers-reduced-motion:reduce)").matches){
+  t=setInterval(()=>{if(!box.isConnected||!dlg.open){clearInterval(t);return}if(!box.matches(":hover"))go(i+1)},3500);
+ }
+ return box}
+ function open(p){const shots=(p.screenshots||[]).filter(Boolean);
+  $("#din").replaceChildren(img(p.image,"Screenshot of "+p.title),el("h3",{id:"dt",text:p.title}),
+   el("div",{},p.category?el("span",{class:"tag",text:p.category}):null,p.status?el("span",{class:"tag ok",text:p.status}):null,p.date?el("span",{class:"tag",text:fmtDate(p.date)}):null),
+   el("p",{text:p.description||""}),...row("Frontend",p.frontend),...row("Backend",p.backend),...row("Database / integrations",p.integrations),
+   p.technologies&&p.technologies.length?el("div",{},el("h4",{text:"Technologies"}),(p.technologies).map(t=>el("span",{class:"tag",text:t}))):null,
+   shots.length?slider(shots,p.title):null,
+   p.demo?el("p",{class:"note",text:"Demo content for illustration. Not a real client project."}):null,
+   el("div",{class:"row"},link(p.liveUrl,"View Project","pri"),link(p.sourceUrl,"Source Code"),el("button",{class:"btn sm",type:"button",text:"Close",onclick:()=>dlg.close()})));
+  dlg.showModal()}
+ function draw(){g.replaceChildren();const list=PROJECTS.filter(p=>cat==="All"||p.category===cat);
+  list.forEach(p=>{const c=el("article",{class:"card pc",tabindex:"0",role:"button","aria-label":"Open details for "+p.title,onclick:()=>open(p),onkeydown:e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(p)}}},
+   img(p.image,"Screenshot of "+p.title),el("div",{class:"b"},el("div",{class:"meta"},el("span",{text:p.category||""}),el("span",{text:p.date?fmtDate(p.date):""})),el("h3",{text:p.title}),p.description?el("p",{text:p.description}):null,el("div",{},(p.technologies||[]).map(t=>el("span",{class:"tag",text:t}))),
+   el("div",{class:"row"},link(p.liveUrl,"View Project","pri"),link(p.sourceUrl,"Source Code"))));g.append(c)});
+  $("#pe").classList.toggle("hide",list.length>0)}
+ filterBar($("#pf"),PROJECTS,"category",c=>{cat=c;draw()});draw();
+ dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()})})();
+
+/* ================= REVIEWS (stored in the database) ================= */
+(function(){
+ const reviews=JSON.parse(document.getElementById("reviews-data").textContent);
+ function draw(){
+  $("#rv").replaceChildren(...(reviews.length
+   ? reviews.map(r=>el("article",{class:"card"},el("div",{class:"meta"},el("strong",{text:r.name}),el("time",{datetime:r.date,text:fmtDate(r.date,true)})),el("p",{text:r.comment})))
+   : [el("p",{class:"empty",text:"No reviews yet. Be the first to leave one."})]));
+ }
+ const m=(id,t)=>$(id).textContent=t;
+ $("#rc").addEventListener("input",e=>m("#cc",e.target.value.length+"/500"));
+ $("#rf").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const n=$("#rn").value.trim(),em=$("#re").value.trim(),c=$("#rc").value.trim();let bad=false;
+  m("#en",n.length<2?(bad=true,"Enter your name (at least 2 characters)."):"");
+  m("#ee",!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)?(bad=true,"Enter a valid email address."):"");
+  m("#ec",c.length<5?(bad=true,"Write a comment of at least 5 characters (max 500)."):"");
+  const box=$("#rm");box.className="";
+  if(bad){box.className="msg bad";box.textContent="Please fix the highlighted fields.";return}
+  try{
+   const res=await fetch("/api/reviews/",{method:"POST",headers:{"Content-Type":"application/json","X-CSRFToken":$("#rf [name=csrfmiddlewaretoken]").value},body:JSON.stringify({name:n,email:em,comment:c,website:$("#rw").value})});
+   const d=await res.json().catch(()=>({}));
+   if(!res.ok)throw new Error(d.error||"Could not send your review.");
+   e.target.reset();m("#cc","0/500");
+      box.className="msg good";box.textContent="Review added successfully! Thank you. It will appear {{reviewsApproval}}.";toast("Review added successfully!");
+  }catch(err){box.className="msg bad";box.textContent=err.message||"Could not send your review. Please try again."}
+ });
+ draw()})();
+/* ================= CONTACT FORM (saved in the database) ================= */
+(function(){
+ const f=$("#cf");if(!f)return;
+ const m=(id,t)=>$(id).textContent=t;
+ f.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const n=$("#cn").value.trim(),em=$("#cm").value.trim(),msg=$("#cx").value.trim();let bad=false;
+  m("#cne",n.length<2?(bad=true,"Enter your name (at least 2 characters)."):"");
+  m("#cme",!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)?(bad=true,"Enter a valid email address."):"");
+  m("#cxe",msg.length<10?(bad=true,"Write a message of at least 10 characters."):"");
+  const box=$("#cs");box.className="";
+  if(bad){box.className="msg bad";box.textContent="Please fix the highlighted fields.";return}
+  try{
+   const res=await fetch("/api/contact/",{method:"POST",headers:{"Content-Type":"application/json","X-CSRFToken":$("#cf [name=csrfmiddlewaretoken]").value},body:JSON.stringify({name:n,email:em,message:msg,website:$("#cw").value})});
+   const d=await res.json().catch(()=>({}));
+   if(!res.ok)throw new Error(d.error||"Could not send your message.");
+   f.reset();box.className="msg good";box.textContent="Message sent successfully! I will reply within 24 hours.";toast("Message sent successfully!");
+  }catch(err){box.className="msg bad";box.textContent=err.message||"Could not send your message. Please try again."}
+ });
+})();
+/* ================= CV DOWNLOAD ================= */
+function saveBlob(blob,name){const a=el("a",{href:URL.createObjectURL(blob),download:name});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+$$("[data-cv]").forEach(b=>b.addEventListener("click",async()=>{
+ try{const r=await fetch(CV_URL,{method:"HEAD"});if(!r.ok)throw 0;const a=el("a",{href:CV_URL,download:CV_FILENAME});document.body.append(a);a.click();a.remove()}
+catch{toast("The CV file is not available right now. Please contact me by email.")}}));
+
+/* ================= UI: theme, menu, scroll ================= */
+(function(){const root=document.documentElement,tb=$("#theme"),ls=store();
+ function set(t){root.dataset.theme=t;tb.textContent=t==="dark"?"🌙":"☀️";tb.setAttribute("aria-label",t==="dark"?"Switch to light mode":"Switch to dark mode");$('meta[name=theme-color]').content=t==="dark"?"#071426":"#f3f7ff";try{ls&&ls.setItem("theme",t)}catch{}}
+ set((ls&&ls.getItem("theme"))||"dark");tb.onclick=()=>set(root.dataset.theme==="dark"?"light":"dark");
+ const bg=$("#burger"),lk=$("#links");
+ const close=()=>{lk.classList.remove("open");bg.setAttribute("aria-expanded","false");bg.textContent="☰"};
+ bg.onclick=()=>{const o=lk.classList.toggle("open");bg.setAttribute("aria-expanded",o);bg.textContent=o?"✕":"☰"};
+ $$("a",lk).forEach(a=>a.addEventListener("click",close));document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+ const links=$$(".links a"),secs=links.map(a=>$(a.getAttribute("href")));
+ function onScroll(){const h=document.documentElement,y=h.scrollTop;$("#prog").style.width=(y/(h.scrollHeight-h.clientHeight)*100||0)+"%";
+  let cur=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.4)cur=i});links.forEach((a,i)=>a.classList.toggle("on",i===cur))}
+ addEventListener("scroll",onScroll,{passive:true});onScroll();
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
+ $$(".rev").forEach(n=>io.observe(n))})();
+ /* ================= CLEAN URLS (/skills instead of #skills) ================= */
+(function(){
+ const ids=["home","about","degrees","skills","services","projects","reviews","contact"];
+ const pathOf=id=>id==="home"?"/":"/"+id;
+ const still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ function goto(id,push){
+  const s=document.getElementById(id);if(!s)return;
+  s.scrollIntoView({behavior:still?"auto":"smooth"});
+  if(push)history.pushState({id},"",pathOf(id));
+ }
+ $$('a[href^="#"]').forEach(a=>{
+  const id=a.getAttribute("href").slice(1);
+  if(!ids.includes(id))return;
+  a.setAttribute("href",pathOf(id));
+  a.addEventListener("click",e=>{e.preventDefault();goto(id,true)});
+ });
+ addEventListener("popstate",()=>{goto(location.pathname.replace(/\//g,"")||"home",false)});
+ addEventListener("load",()=>{
+  const first=location.pathname.replace(/\//g,"")||"home";
+  if(first!=="home"&&ids.includes(first))goto(first,false);
+ });
+})();
+/* ================= LOGO + FAVICON SWITCHER ================= */
+(function(){
+ const FAVICONS=["{% static 'favicon1.png' %}","{% static 'favicon2.png' %}"];
+ const SWITCH_MS=4000;
+ const logo=$("#logoImg"),tab=document.querySelector('link[rel="icon"]');
+ if(!logo||FAVICONS.length<2||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ let i=0;
+ setInterval(()=>{
+  i=(i+1)%FAVICONS.length;
+  logo.style.opacity=0;
+  setTimeout(()=>{logo.src=FAVICONS[i];logo.style.opacity=1;if(tab)tab.href=FAVICONS[i]},300);
+ },SWITCH_MS);
+})();
+/* ================= ANALYTICS EVENTS ================= */
+(function(){
+ const ev=(name,params)=>{if(typeof gtag==="function")gtag("event",name,params||{})};
+ document.addEventListener("click",e=>{
+  const card=e.target.closest(".pc");
+  if(card){const h=card.querySelector("h3");ev("project_open",{project_title:h?h.textContent:""});return}
+  const a=e.target.closest("a,button");if(!a)return;
+  if(a.hasAttribute("data-cv"))ev("cv_download");
+  else if(a.id==="waFloat"||a.id==="wal"||a.id==="fw")ev("whatsapp_click");
+  else if(a.id==="mail"||a.id==="fm")ev("email_click");
+  else if(a.id==="copy")ev("copy_email");
+ });
+})();
+</script>
+</body>
+</html>
