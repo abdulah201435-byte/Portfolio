@@ -34,6 +34,7 @@ CSRF_TRUSTED_ORIGINS = ["https://live-age-calculator--abdullah201435.replit.app"
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
